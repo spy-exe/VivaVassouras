@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praça Barão de Campo Belo - O Coração de Vassouras</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Responsivo Premium -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D4A574;
+            --secondary-beige: #F5F1E8;
+            --accent-brown: #8B4513;
+            --text-dark: #3E2723;
+            --text-light: #6D4C41;
+            --shadow-soft: rgba(139, 69, 19, 0.1);
+            --gradient-warm: linear-gradient(135deg, #F5F1E8 0%, #E8DCC0 100%);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--gradient-warm);
+            scroll-behavior: smooth;
+        }
+
+        /* Header Premium */
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300"><rect fill="%23D4A574" width="1200" height="300"/><polygon fill="%23F5F1E8" opacity="0.1" points="0,300 400,250 800,280 1200,230 1200,300"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow-soft);
+        }
+
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            color: var(--secondary-beige);
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Título Principal */
+        .main-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            text-align: center;
+            color: var(--accent-brown);
+            margin: 3rem 0 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        /* Seções */
+        .section {
+            background: white;
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px var(--shadow-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(139, 69, 19, 0.15);
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--accent-brown);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Introdução Premium */
+        .intro-text {
+            font-size: 1.2rem;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 900px;
+            line-height: 1.8;
+            color: var(--text-light);
+            background: linear-gradient(135deg, rgba(245, 241, 232, 0.8), rgba(232, 220, 192, 0.8));
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        /* Timeline Responsiva */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-gold), var(--accent-brown));
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: var(--secondary-beige);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.2);
+        }
+
+        .timeline-year {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 15px;
+            height: 15px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
+        }
+
+        /* Galeria Premium */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow-soft);
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(139, 69, 19, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Curiosidades */
+        .curiosities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .curiosity-card {
+            background: linear-gradient(135deg, var(--secondary-beige) 0%, #F0E6D2 100%);
+            padding: 1.8rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-gold);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curiosity-card::before {
+            content: '💡';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.3;
+        }
+
+        .curiosity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 69, 19, 0.15);
+        }
+
+        /* Footer Elegante */
+        .footer {
+            background: linear-gradient(135deg, var(--accent-brown) 0%, #5D4037 100%);
+            color: var(--secondary-beige);
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .footer-message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .pix-info {
+            background: rgba(245, 241, 232, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(212, 165, 116, 0.3);
+        }
+
+        .pix-label {
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .pix-code {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            background: rgba(0,0,0,0.2);
+            padding: 0.8rem;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsividade Móvel */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                margin-left: 40px;
+            }
+
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .curiosities {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+                margin: 2rem 0 1rem;
+            }
+        }
+
+        /* Animações Suaves */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Destaque para elementos importantes */
+        .highlight {
+            background: linear-gradient(120deg, var(--primary-gold) 0%, transparent 100%);
+            background-size: 100% 2px;
+            background-repeat: no-repeat;
+            background-position: 0 100%;
+            font-weight: 600;
+        }
+
+        /* Botão de interação (se necessário) */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--accent-brown) 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Premium -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🏛️ Viva Vassouras</h1>
+            <p class="tagline">Preservando a História Imperial Brasileira</p>
+        </div>
+    </header>
+
+    <!-- Título Principal -->
+    <div class="container">
+        <h1 class="main-title">Praça Barão de Campo Belo<br><span style="font-size: 0.7em; color: var(--text-light);">O Coração de Vassouras</span></h1>
+
+        <!-- Introdução Premium -->
+        <div class="intro-text">
+            Bem-vindo ao <span class="highlight">marco histórico mais emblemático</span> de Vassouras. Esta magnífica praça, construída no século XIX, é um tesouro arquitetônico rodeado por <span class="highlight">palmeiras imperiais centenárias</span> e casarões coloniais que contam a rica história do Brasil Imperial. Em seu centro, o <span class="highlight">famoso Chafariz Monumental de 1846</span> permanece como testemunha silenciosa dos tempos áureos do café e das visitas da realeza brasileira.
+        </div>
+
+        <!-- Timeline Histórica -->
+        <section class="section">
+            <h2 class="section-title">📜 Linha do Tempo Histórica</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1835-1857</div>
+                        <h3>Construção da Praça</h3>
+                        <p>A praça foi construída a pedido de <strong>Laureano Corrêa e Castro, o Barão de Campo Belo</strong>, avô materno da famosa Eufrásia Teixeira Leite. Durante 22 anos, a praça foi cuidadosamente planejada para ser o coração da villa de Vassouras.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1846</div>
+                        <h3>Chafariz Monumental</h3>
+                        <p>Construção do <strong>Chafariz Monumental</strong>, projetado pelo arquiteto espanhol <strong>D. Joaquim Soto Garcia de La Veja</strong>. Este ornamento foi construído para servir como fonte de água potável para toda a vila de Vassouras.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1857</div>
+                        <h3>Conclusão e Palmeiras</h3>
+                        <p>Finalização da praça com o plantio das <strong>palmeiras imperiais</strong> e construção das calçadas. As mudas das palmeiras vieram diretamente do <strong>Jardim Botânico do Rio de Janeiro</strong>, conferindo elegância imperial ao local.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Séc. XIX</div>
+                        <h3>Visitas Imperiais</h3>
+                        <p>A praça foi palco de <strong>festas imperiais e visitas da família real</strong>, incluindo Dom Pedro II e a Princesa Isabel. Vassouras tornou-se refúgio da aristocracia do café e recebeu membros da realeza em diversas ocasiões solenes.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Presente</div>
+                        <h3>Patrimônio Tombado</h3>
+                        <p>A praça compõe o <strong>conjunto arquitetônico tombado pelo IPHAN</strong> e é considerada uma das praças mais charmosas do Estado do Rio de Janeiro, preservando sua importância histórica e cultural.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria Premium -->
+        <section class="section">
+            <h2 class="section-title">🖼️ Galeria Histórica</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://i.pinimg.com/originals/15/14/63/15146364428e9d3b2253b0c4b96f0b1f.jpg" alt="Chafariz Histórico de 1846">
+                    <div class="gallery-caption">Chafariz Histórico de 1846 - Obra do arquiteto espanhol D. Joaquim Soto Garcia de La Veja</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://live.staticflickr.com/7580/15377669834_45b3eede26_b.jpg" alt="Palmeiras Imperiais Centenárias">
+                    <div class="gallery-caption">Palmeiras Imperiais - Mudas trazidas do Jardim Botânico do RJ em 1857</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://monitormercantil.com.br/wp-content/uploads/2022/03/Praca-Barao-de-Campo-Belo-foto-Prefeitura-de-Vassouras.jpg" alt="Eventos Culturais na Praça">
+                    <div class="gallery-caption">Cultura Viva - A praça como palco de eventos e celebrações comunitárias</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curiosidades -->
+        <section class="section">
+            <h2 class="section-title">🤔 Você Sabia?</h2>
+            <div class="curiosities">
+                <div class="curiosity-card">
+                    <h3 style="color: var(--accent-brown); margin-bottom: 1rem;">👑 Palco Imperial</h3>
+                    <p>A praça foi <strong>palco de festas imperiais</strong> e celebrações populares durante o auge do Império Brasileiro. Dom Pedro II e a Princesa Isabel visitaram Vassouras diversas vezes, participando de eventos solenes na região.</p>
+                </div>
+
+                <div class="curiosity-card">
+                    <h3 style="color: var(--accent-brown); margin-bottom: 1rem;">🌴 Jardim Botânico</h3>
+                    <p>As majestosas <strong>palmeiras imperiais</strong> que adornam a praça foram plantadas com mudas especiais vindas diretamente do Jardim Botânico do Rio de Janeiro, conferindo um toque de elegância real ao local.</p>
+                </div>
+
+                <div class="curiosity-card">
+                    <h3 style="color: var(--accent-brown); margin-bottom: 1rem;">💧 Fonte de Vida</h3>
+                    <p>O <strong>Chafariz Monumental já abasteceu</strong> toda a população de Vassouras com água potável. Era o principal ponto de distribuição de água da vila, servindo como elemento vital para a comunidade do século XIX.</p>
+                </div>
+
+                <div class="curiosity-card">
+                    <h3 style="color: var(--accent-brown); margin-bottom: 1rem;">🏛️ Múltiplos Nomes</h3>
+                    <p>A praça <strong>já teve diversos nomes</strong> ao longo da história: Praça da Matriz, do Comércio, da Concórdia, Aquidabã, até receber o nome atual em homenagem ao seu criador, o Barão de Campo Belo.</p>
+                </div>
+
+                <div class="curiosity-card">
+                    <h3 style="color: var(--accent-brown); margin-bottom: 1rem;">☕ Era do Café</h3>
+                    <p>Durante o <strong>período áureo do café</strong>, a praça era o ponto de encontro dos barões do café e local de negociações importantes que movimentavam a economia do Império Brasileiro.</p>
+                </div>
+
+                <div class="curiosity-card">
+                    <h3 style="color: var(--accent-brown); margin-bottom: 1rem;">🏰 Ramo de Vassouras</h3>
+                    <p>Vassouras abriga o <strong>"Ramo de Vassouras"</strong> da família imperial brasileira, descendentes da Princesa Isabel, que se estabeleceram na cidade mantendo viva a tradição monárquica brasileira.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Elegante -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-message">
+                "Este projeto foi idealizado por <strong>Ricardo Figueiredo</strong>, entusiasta da cultura, tecnologia e inovação social em Vassouras. Se este conteúdo te tocou ou ajudou, considere fazer uma doação simbólica para apoiar este trabalho independente."
+            </p>
+            
+            <div class="pix-info">
+                <div class="pix-label">💰 Gostou? Apoie este projeto via PIX:</div>
+                 <div class="pix-code">d50fae63-aab8-4dbd-8653-f785090ded5a</div>
+                 <p>Chave aleatória</p>
+            </div>
+            
+            <p style="margin-top: 2rem; opacity: 0.8; font-size: 0.9rem;">
+                🏛️ Preservando a memória histórica de Vassouras para as futuras gerações<br>  
+                <span style="font-size: 0.8rem;">© 2025 - Viva Vassouras - Cultura, História e Tecnologia <br>
+                    E-mail para contato: <strong>ricardofigueiredo1501@gmail.com</strong></span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script para animações suaves -->
+    <script>
+        // Animação de entrada dos elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar seções para animação
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Smooth scroll para links internos (se houver)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Adicionar efeito hover nos cards de curiosidades
+        document.querySelectorAll('.curiosity-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Console log amigável
+        console.log('🏛️ Viva Vassouras - Website carregado com sucesso!');
+        console.log('📱 Site otimizado para QR Code e dispositivos móveis');
+        console.log('🎨 Design premium criado com amor pela história de Vassouras');
+    </script>
+</body>
+</html>
