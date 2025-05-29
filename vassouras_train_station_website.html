@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estação de Vassouras - Onde o Tempo Aguardava o Trem</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Premium com Paleta Histórica Ferroviária -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rust-primary: #B85C38;
+            --sepia-warm: #D2B48C;
+            --steel-gray: #708090;
+            --light-beige: #F5F5DC;
+            --deep-rust: #8B4513;
+            --charcoal: #36454F;
+            --antique-white: #FAEBD7;
+            --shadow-rust: rgba(184, 92, 56, 0.15);
+            --gradient-historic: linear-gradient(135deg, #F5F5DC 0%, #E6DDD4 100%);
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            background: var(--gradient-historic);
+            scroll-behavior: smooth;
+        }
+
+        /* Header Premium com Tema Ferroviário */
+        .header {
+            background: linear-gradient(rgba(54, 69, 79, 0.85), rgba(139, 69, 19, 0.75)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300"><rect fill="%23708090" width="1200" height="300"/><polygon fill="%23B85C38" opacity="0.3" points="0,300 300,250 600,280 900,240 1200,270 1200,300"/><rect fill="%23D2B48C" opacity="0.2" x="0" y="250" width="1200" height="50"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 6px 25px var(--shadow-rust);
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="rails" x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse"><rect fill="%23708090" width="100" height="3"/><rect fill="%23708090" y="17" width="100" height="3"/></pattern></defs><rect fill="url(%23rails)" width="100" height="20" opacity="0.1"/></svg>');
+            background-size: 200px 40px;
+            animation: railsMove 20s linear infinite;
+        }
+
+        @keyframes railsMove {
+            from { transform: translateX(0); }
+            to { transform: translateX(-200px); }
+        }
+
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--sepia-warm);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tagline {
+            color: var(--antique-white);
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Título Principal com Estilo Ferroviário */
+        .main-title {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 400;
+            text-align: center;
+            color: var(--deep-rust);
+            margin: 3rem 0 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .main-title::after {
+            content: '🚂';
+            display: block;
+            font-size: 2rem;
+            margin-top: 0.5rem;
+            opacity: 0.7;
+        }
+
+        /* Seções com Tema Industrial */
+        .section {
+            background: white;
+            margin: 2.5rem 0;
+            padding: 2.8rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-rust);
+            transition: all 0.4s ease;
+            position: relative;
+            border-top: 4px solid var(--rust-primary);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rust-primary) 0%, var(--steel-gray) 50%, var(--rust-primary) 100%);
+        }
+
+        .section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(184, 92, 56, 0.25);
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            color: var(--deep-rust);
+            margin-bottom: 1.8rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rust-primary), var(--sepia-warm));
+            border-radius: 2px;
+        }
+
+        /* Introdução Premium */
+        .intro-text {
+            font-size: 1.25rem;
+            text-align: center;
+            margin: 2.5rem auto;
+            max-width: 950px;
+            line-height: 1.8;
+            color: var(--steel-gray);
+            background: linear-gradient(135deg, rgba(245, 245, 220, 0.8), rgba(230, 221, 212, 0.8));
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--rust-primary);
+            position: relative;
+        }
+
+        .intro-text::before {
+            content: '🚉';
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            opacity: 0.3;
+        }
+
+        /* Timeline Ferroviária */
+        .timeline {
+            position: relative;
+            padding: 3rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--rust-primary), var(--steel-gray), var(--rust-primary));
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(184, 92, 56, 0.3);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2rem;
+            background: var(--light-beige);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.4s ease;
+            border: 1px solid var(--sepia-warm);
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(184, 92, 56, 0.2);
+        }
+
+        .timeline-year {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--deep-rust);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .timeline-year::before {
+            content: '📅';
+            font-size: 1.2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, var(--rust-primary) 0%, var(--deep-rust) 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px rgba(184, 92, 56, 0.6);
+            border: 3px solid white;
+        }
+
+        /* Galeria Industrial */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-rust);
+            transition: all 0.5s ease;
+            border: 2px solid var(--sepia-warm);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(184, 92, 56, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(54, 69, 79, 0.9));
+            color: var(--antique-white);
+            padding: 2.5rem 1.8rem 1.8rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        /* Curiosidades Ferroviárias */
+        .curiosities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .curiosity-card {
+            background: linear-gradient(135deg, var(--light-beige) 0%, #F0E9D2 100%);
+            padding: 2.2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--rust-primary);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px var(--shadow-rust);
+        }
+
+        .curiosity-card::before {
+            content: '🔍';
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            font-size: 1.8rem;
+            opacity: 0.3;
+        }
+
+        .curiosity-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(184, 92, 56, 0.2);
+        }
+
+        .curiosity-card h3 {
+            color: var(--deep-rust);
+            margin-bottom: 1rem;
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+        }
+
+        /* Footer Industrial */
+        .footer {
+            background: linear-gradient(135deg, var(--charcoal) 0%, #2F3E46 100%);
+            color: var(--antique-white);
+            padding: 3.5rem 0 2.5rem;
+            margin-top: 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--rust-primary), transparent);
+        }
+
+        .footer-content {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .footer-message {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .pix-info {
+            background: rgba(245, 245, 220, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid rgba(184, 92, 56, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .pix-label {
+            font-weight: 600;
+            color: var(--sepia-warm);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .pix-code {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 0.8rem;
+            border: 1px solid var(--rust-primary);
+        }
+
+        /* Elementos Destacados */
+        .highlight {
+            background: linear-gradient(120deg, var(--rust-primary) 0%, transparent 100%);
+            background-size: 100% 3px;
+            background-repeat: no-repeat;
+            background-position: 0 100%;
+            font-weight: 600;
+            color: var(--deep-rust);
+        }
+
+        /* Responsividade Mobile-First */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 1.8rem;
+                margin: 1.5rem 0;
+            }
+
+            .timeline::before {
+                left: 25px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                margin-left: 50px;
+            }
+
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 25px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .curiosities {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 2.2rem;
+            }
+
+            .main-title {
+                font-size: 2.2rem;
+                margin: 2rem 0 1.5rem;
+            }
+
+            .intro-text {
+                font-size: 1.1rem;
+                padding: 2rem;
+            }
+        }
+
+        /* Animações Ferroviárias */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes trainWhistle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .section {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .logo {
+            animation: trainWhistle 3s ease-in-out infinite;
+        }
+
+        /* Efeitos Especiais */
+        .steam-effect {
+            position: relative;
+        }
+
+        .steam-effect::after {
+            content: '💨';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            opacity: 0.6;
+            animation: float 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Premium com Tema Ferroviário -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🚂 Viva Vassouras</h1>
+            <p class="tagline">Preservando a Memória Ferroviária Brasileira</p>
+        </div>
+    </header>
+
+    <!-- Título Principal -->
+    <div class="container">
+        <h1 class="main-title">Estação de Vassouras<br><span style="font-size: 0.65em; color: var(--steel-gray);">Onde o Tempo Aguardava o Trem</span></h1>
+
+        <!-- Introdução Premium -->
+        <div class="intro-text">
+            Descubra a <span class="highlight">histórica Estação Ferroviária de Vassouras</span>, inaugurada em 1914 como parte da lendária Estrada de Ferro Dom Pedro II. Este marco da engenharia nacional foi peça fundamental na <span class="highlight">era áurea do café</span>, conectando o Vale do Paraíba ao Rio de Janeiro. Hoje, este patrimônio histórico abriga o <span class="highlight">Memorial do Trem</span> e preserva uma raridade: a última <span class="highlight">locomotiva Baldwin original de 1889</span>, testemunha silenciosa dos tempos imperiais brasileiros.
+        </div>
+
+        <!-- Timeline Histórica -->
+        <section class="section">
+            <h2 class="section-title">🕐 Trilhos da História</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1875</div>
+                        <h3>Estação Carril Vassourense</h3>
+                        <p>A primeira estação foi construída como <strong>"Estação Carril Vassourense"</strong>, conectando Vassouras a Rio das Mortes através de <strong>bondes puxados por burros</strong>, até encontrar as composições da Estrada de Ferro D. Pedro II.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1889</div>
+                        <h3>Locomotiva Baldwin</h3>
+                        <p>Fabricação da <strong>locomotiva a vapor Baldwin</strong> nos Estados Unidos, modelo 10055, registro 122. Esta máquina se tornaria a última remanescente da era imperial, operando na <strong>Estrada de Ferro Dom Pedro II</strong>.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1914</div>
+                        <h3>Estação Moderna</h3>
+                        <p>Remodelação completa da estação, que adquire sua <strong>aparência atual</strong>. A nova estação ferroviária torna-se símbolo da modernização do transporte no Vale do Café, impulsionando a economia regional.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1952-1970</div>
+                        <h3>Era do Declínio</h3>
+                        <p>A locomotiva Baldwin encerra suas atividades em 1952, sendo transferida para uma fábrica de cimento em Volta Redonda. Em 1970, a estação de passageiros é <strong>oficialmente desativada</strong>, encerrando quase um século de operação.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2014-2015</div>
+                        <h3>Renascimento Cultural</h3>
+                        <p>Inauguração do <strong>Memorial do Trem</strong> nos 100 anos da estação. Em 2015, a locomotiva Baldwin é resgatada de Três Rios e trazida de volta para Vassouras, completando este importante projeto de <strong>preservação histórica</strong>.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria Premium -->
+        <section class="section">
+            <h2 class="section-title">📸 Galeria Histórica</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="http://www.estacoesferroviarias.com.br/efcb_rj_auxiliar_ramais/fotos/vassouras9142.jpg" alt="Estação Ferroviária de Vassouras em 1920">
+                    <div class="gallery-caption">Estação em 1920 - Auge do transporte ferroviário no Vale do Café</div>
+                </div>
+                <div class="gallery-item steam-effect">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/63/24/bc/entrada-da-estacao.jpg?w=800&h=-1&s=1" alt="Locomotiva Baldwin 1889">
+                    <div class="gallery-caption">Locomotiva Baldwin 1889 - Último exemplar da Estrada de Ferro Dom Pedro II</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/64/83/f7/caption.jpg?w=1000&h=-1&s=1" alt="Memorial do Trem">
+                    <div class="gallery-caption">Memorial do Trem - Preservando a memória ferroviária de Vassouras</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curiosidades -->
+        <section class="section">
+            <h2 class="section-title">🤔 Você Sabia?</h2>
+            <div class="curiosities">
+                <div class="curiosity-card">
+                    <h3>🛤️ Conexão com o Rio</h3>
+                    <p>A linha ferroviária de Vassouras <strong>conectava diretamente ao Rio de Janeiro</strong>, sendo fundamental para o escoamento da produção cafeeira do Vale do Paraíba. Os trens transportavam não apenas café, mas também passageiros, correspondências e mercadorias diversas, dinamizando toda a região.</p>
+                </div>
+
+                <div class="curiosity-card">
+                    <h3>🚂 Última Sobrevivente Imperial</h3>
+                    <p>A <strong>locomotiva Baldwin exposta é única no Brasil</strong> - é o último exemplar remanescente que operou na Estrada de Ferro Dom Pedro II durante o período imperial. Fabricada em 1889, ano da Proclamação da República, ela testemunhou a transição do Império para a República brasileira.</p>
+                </div>
+
+                <div class="curiosity-card">
+                    <h3>👨‍👩‍👧‍👦 Famílias Ferroviárias</h3>
+                    <p><strong>Muitas famílias vassourenses trabalhavam na ferrovia</strong>, desde maquinistas e foguistas até guardas e telegrafistas. A estação era um importante empregador local, e os ferroviários formavam uma comunidade unida, com tradições e culturas próprias que marcaram gerações.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer Industrial -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-message">
+                "Este projeto foi idealizado por <strong>Ricardo Figueiredo</strong>, entusiasta da cultura, tecnologia e inovação social em Vassouras. Se este conteúdo te tocou ou ajudou, considere fazer uma doação simbólica para apoiar este trabalho independente."
+            </p>
+            
+            <div class="pix-info">
+                <div class="pix-label">🚂 Apoie este projeto via PIX:</div>
+                <div class="pix-code">d50fae63-aab8-4dbd-8653-f785090ded5a</div>
+            </div>
+            
+            <p style="margin-top: 2.5rem; opacity: 0.8; font-size: 0.95rem;">
+                🚉 Preservando a memória ferroviária de Vassouras para as futuras gerações<br>
+                <span style="font-size: 0.8rem;">© 2025 - Viva Vassouras - História, Tecnologia e Patrimônio<br>
+                     E-mail para contato: <strong>ricardofigueiredo1501@gmail.com</strong></span></span> <br>
+                                    
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts para Animações -->
+    <script>
+        // Intersection Observer para animações de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar seções para animação
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(40px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Efeito de hover aprimorado nos cards
+        document.querySelectorAll('.curiosity-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                this.style.boxShadow = '0 15px 35px rgba(184, 92, 56, 0.25)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '0 6px 20px rgba(184, 92, 56, 0.15)';
+            });
+        });
+
+        // Efeito de locomotiva no título
+        const mainTitle = document.querySelector('.main-title');
+        let trainDirection = 1;
+        
+        setInterval(() => {
+            if (Math.random() > 0.95) { // 5% de chance a cada intervalo
+                mainTitle.style.transform = `translateX(${trainDirection * 5}px)`;
+                setTimeout(() => {
+                    mainTitle.style.transform = 'translateX(0)';
+                }, 200);
+                trainDirection *= -1;
+            }
+        }, 100);
+
+        // Smooth scroll para navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Console personalizado
+        console.log('🚂 Estação de Vassouras - Website carregado!');
+        console.log('🛤️ Trilhando pela história ferroviária do Brasil');
+        console.log('📱 Otimizado para QR code e dispositivos móveis');
+        console.log('⚡ Performance premium com animações suaves');
+        
+        // Adicionar efeito de vapor ocasional
+        setInterval(() => {
+            if (Math.random() > 0.98) {
+                const steamElements = document.querySelectorAll('.steam-effect');
+                steamElements.forEach(element => {
+                    element.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        element.style.transform = 'scale(1)';
+                    }, 500);
+                });
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
